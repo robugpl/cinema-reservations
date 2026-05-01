@@ -1,0 +1,245 @@
+classDiagram
+    direction TB
+
+    AbstractId <|-- ScreeningRoomId
+    AbstractId <|-- SeatId
+    AbstractId <|-- MovieId
+    AbstractId <|-- ReservationId
+    AbstractId <|-- ScreeningId
+    AbstractId <|-- TicketId
+    AbstractId <|-- OrderId
+
+
+    Seat "1" --> "1" SeatId: id
+    Row "1" --> "*" Seat: seats
+    ScreeningRoom "1" --> "1" ScreeningRoomId : id
+    ScreeningRoom "1" --> "*" Row : rows
+    ScreeningRoom "1" --> "*" Seat: seatsIndex
+    
+    Movie "1" --> "1" MovieId: id
+    Movie "1" --> "1" MovieDuration: duration
+    
+    Screening "1" --> "1" ScreeningId : id
+    Screening "1" --> "1" ScreeningRoomId : screeningRoomId
+    Screening "1" --> "1" MovieId : movieId
+    Screening "1" --> "*" Reservation : reservations
+
+    Reservation "1" --> "1" ReservationId: id
+    Reservation "1" --> "1" ScreeningId: screeningId
+    Reservation "1" --> "1" SeatId: seatId
+    Reservation "1" --> "1" ReservationStatus: status
+    Reservation "1" --> "1" Email: email
+
+    Ticket "1" --> "1" TicketId: id
+    Ticket "1" --> "1" ScreeningId: screeningId
+    Ticket "1" --> "1" SeatId: seatId
+    Ticket "1" --> "1" Money: price
+
+    Order "1" --> "1" OrderId: id
+    Order "1" --> "*" Ticket: tickets
+    Order "1" --> "1" Email: email
+    Order "1" --> "1" Money: total
+
+    namespace App_Shared_Domain {
+        class AbstractId {
+            <<abstract>>
+            -string value
+            __construct(string value)
+            __toString(): string
+            generate() : static$
+            toString() : string
+        }
+
+        class Email {
+            -string value
+            __construct(string value)
+            __toString(): string
+            toString(): string
+        }
+
+        class Money {
+            -int amountInMinorUnit
+
+            __construct(int amountInMinorUnit)
+            __toString(): string
+            toString(): string
+        }
+    }
+
+	namespace App_Reservations_Domain_ScreeningRoom {
+        class ScreeningRoom {
+            -ScreeningRoomId id
+            -string name
+            -Row[] rows
+            -Seat[] seatsIndex
+	        __construct(ScreeningRoomId id, string name, Row[] rows)
+            getId(): ScreeningRoomId
+            getName(): string
+            getRows(): Row[]
+        }
+
+        class ScreeningRoomId {
+
+        }
+
+        class Row {
+	        -int rowNumber
+	        -Seat[] seats
+
+            __construct(int rowNumber)
+	        getRowNumber: int
+        }
+
+        class Seat {
+            -SeatId id
+            -string label
+
+            __construct(
+                SeatId id,
+                string label
+            )
+
+            getId(): SeatId
+            getLabel: string
+        }
+
+        class SeatId {
+
+        }
+	}
+
+    namespace App_Reservations_Domain {
+        class Movie {
+            -MovieId id
+            -string title
+            -string director
+            -MovieDuration duration
+
+            __construct(
+                MovieId movieId,
+                MovieDuration duration,
+                string title,
+                string director
+            )
+            getId(): MovieId
+            getTitle(): string
+            getDirector(): string
+            getDuration(): MovieDuration
+
+        }
+
+        class MovieId {
+        }
+
+        class MovieDuration {
+            -int seconds
+            __construct(int seconds)
+
+            toMinutes(): int
+            toSeconds(): int
+        }
+
+        class Reservation {
+            -ReservationId id
+            -ScreeningId screeningId
+            -SeatId seatId
+            -ReservationStatus status
+            -Email email
+            -DateTimeImmutable date
+            -DateTimeImmutable expirationDate
+
+            __construct(
+                ReservationId id,
+                ScreeningId screeningId,
+                SeatId seatId,
+                Email email,
+                DateTimeImmutable date,
+                DateTimeImmutable expirationDate
+            )
+            getId(): ReservationId
+            getScreeningId(): ScreeningId
+            getSeatId(): SeatId
+            getReservationStatus(): ReservationStatus
+            getEmail(): Email
+            getExpirationDate(): DateTimeImmutable
+        }
+
+        class ReservationId {
+        }
+
+        class ReservationStatus {
+            <<enumeration>>
+            PENDING
+            REDEEMED
+            EXPIRED
+            CANCELED
+        }
+
+        class Screening {
+            -ScreeningId id
+            -DateTimeImmutable startDate
+            -ScreeningRoomId screeningRoomId
+            -MovieId movieId
+            -Reservation[] reservations
+
+            __construct(
+                ScreeningId id,
+                DateTime startDate,
+                ScreeningRoomId screeningRoomId,
+                MovieId movieId
+            )
+            getScreeningId(): ScreeningId
+            getScreeningRoomId(): ScreeningRoomId
+            getMovieId(): MovieId
+            getReservations(): Reservation[]
+            reserve(SeatId seatId): Reservation
+            cancelReservation(ReservationId reservationId)
+        }
+
+        class ScreeningId {
+        }
+    }
+
+    namespace App_Sales_Domain {
+        class Ticket {
+            -TicketId id
+            -ScreeningId screeningId
+            -SeatId seatId
+            -Money price
+
+            __construct(
+                TicketId id,
+                ScreeningId screeningId,
+                SeatId seatId,
+                Money price
+            )
+            getId(): TicketId
+            getScreeningId(): ScreeningId
+            getSeatId(): SeatId
+            getPrice(): Money
+
+        }
+
+        class TicketId {
+        }
+
+        class Order {
+            -OrderId id
+            -Ticket[] tickets
+            -Email email
+            -Money total
+
+            __construct(
+                OrderId id,
+                Ticket[] tickets,
+                Email email
+            )
+            -countTotal(): void
+            getTotal(): Money
+            getEmail: Email
+        }
+
+        class OrderId {
+        }
+    }
+
