@@ -169,10 +169,10 @@ classDiagram
 
         class ReservationStatus {
             <<enumeration>>
-            PENDING
-            REDEEMED
-            EXPIRED
-            CANCELED
+            String PENDING = "pending"
+            String REDEEMED = "redeemed"
+            String EXPIRED = "expired"
+            String CANCELED = "canceled"
         }
 
         class Screening {
@@ -192,7 +192,7 @@ classDiagram
             getScreeningRoomId(): ScreeningRoomId
             getMovieId(): MovieId
             getReservations(): Reservation[]
-            reserve(SeatId seatId): Reservation
+            reserve(SeatId seatId, Email email, DateTimeImmutable date, DateTimeImmutable expirationDate): Reservation
             cancelReservation(ReservationId reservationId)
         }
 

@@ -5,30 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fba0450c-143b-41a2-ba79-bb3240da630c" name="Changes" comment="Ubiquitous language, class diagram of the domain, ddev">
-      <change afterPath="$PROJECT_DIR$/.GEMINI.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.ddev/config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.ddev/traefik/certs/CinemaReservations.crt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.ddev/traefik/certs/CinemaReservations.key" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.ddev/traefik/config/CinemaReservations.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.env.test" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/CinemaReservations.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/commandlinetools/Symfony_21_04_2026__15_31.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/commandlinetools/schemas/frameworkDescriptionVersion1.1.4.xsd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/laravel-idea.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/phpunit" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/domain_class_diagram.mmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/ubiquitous_language.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/phpunit.dist.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/bootstrap.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Reservations/Domain/Exception/InvalidMovieDurationException.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Reservations/Infrastructure/Console/MakeReservationCommand.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Sales/Domain/Exception/OrderCannotBeEmpty.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Sales/Infrastructure/Console/PickUpReservationCommand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.GEMINI.md" beforeDir="false" afterPath="$PROJECT_DIR$/.GEMINI.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/domain_class_diagram.mmd" beforeDir="false" afterPath="$PROJECT_DIR$/docs/domain_class_diagram.mmd" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +24,7 @@
     <execution />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="97" />
+    <option name="cachedIndexableFilesCount" value="123" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="Git.Settings">
@@ -50,6 +34,7 @@
     <commands />
     <urls />
   </component>
+  <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="/usr/bin/php">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/staabm/side-effects-detector" />
@@ -124,26 +109,61 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary&quot;: &quot;PHPUnit&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "PHPUnit.MovieDurationTest.testItValidatesPositiveDuration.executor": "Run",
+    "PHPUnit.OrderTest.testItFailsWithNoItems.executor": "Debug",
+    "PHPUnit.ScreeningTest.testItAllowsReservationIfPreviousIsExpired.executor": "Run",
+    "PHPUnit.ScreeningTest.testItSuccessfullyReservesAnAvailableSeat.executor": "Run",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary": "PHPUnit",
+    "git-widget-placeholder": "master",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests/Reservations/Domain" />
+    </key>
+  </component>
+  <component name="RunManager" selected="PHPUnit.MovieDurationTest.testItValidatesPositiveDuration">
+    <configuration name="MovieDurationTest.testItValidatesPositiveDuration" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Reservations\Domain\MovieDurationTest" file="$PROJECT_DIR$/tests/Reservations/Domain/MovieDurationTest.php" method="testItValidatesPositiveDuration" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="OrderTest.testItFailsWithNoItems" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Sales\Domain\OrderTest" file="$PROJECT_DIR$/tests/Sales/Domain/OrderTest.php" method="testItFailsWithNoItems" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ScreeningTest.testItAllowsReservationIfPreviousIsExpired" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Reservations\Domain\ScreeningTest" file="$PROJECT_DIR$/tests/Reservations/Domain/ScreeningTest.php" method="testItAllowsReservationIfPreviousIsExpired" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ScreeningTest.testItSuccessfullyReservesAnAvailableSeat" type="PHPUnitRunConfigurationType" factoryName="PHPUnit" temporary="true">
+      <TestRunner class="App\Tests\Reservations\Domain\ScreeningTest" file="$PROJECT_DIR$/tests/Reservations/Domain/ScreeningTest.php" method="testItSuccessfullyReservesAnAvailableSeat" scope="Method" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHPUnit.MovieDurationTest.testItValidatesPositiveDuration" />
+        <item itemvalue="PHPUnit.OrderTest.testItFailsWithNoItems" />
+        <item itemvalue="PHPUnit.ScreeningTest.testItAllowsReservationIfPreviousIsExpired" />
+        <item itemvalue="PHPUnit.ScreeningTest.testItSuccessfullyReservesAnAvailableSeat" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -171,12 +191,33 @@
       <workItem from="1777114498416" duration="2345000" />
       <workItem from="1777144140729" duration="1904000" />
       <workItem from="1777371679248" duration="820000" />
-      <workItem from="1777639945941" duration="15238000" />
+      <workItem from="1777639945941" duration="18544000" />
+      <workItem from="1777911053062" duration="5818000" />
     </task>
+    <task id="LOCAL-00001" summary="Ubiquitous language, class diagram of the domain, ddev">
+      <option name="closed" value="true" />
+      <created>1777665833767</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1777665833767</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Ubiquitous language, class diagram of the domain, ddev" />
