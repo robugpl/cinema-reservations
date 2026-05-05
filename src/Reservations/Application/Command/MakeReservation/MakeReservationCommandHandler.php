@@ -31,9 +31,8 @@ readonly class MakeReservationCommandHandler
         }
         $email = new Email($command->email);
         $date = new \DateTimeImmutable();
-        $expirationDate = $date->modify('+15 minutes'); // Business rule from domain
 
-        $reservation = $screening->reserve($seatIds, $email, $date, $expirationDate);
+        $reservation = $screening->reserve($seatIds, $email, $date);
 
         $this->screeningRepository->save($screening);
 

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Reservations\Infrastructure;
 
 use App\Reservations\Domain\MovieId;
+use App\Reservations\Domain\ReservationId;
 use App\Reservations\Domain\Screening;
 use App\Reservations\Domain\ScreeningId;
 use App\Reservations\Domain\ScreeningRepositoryInterface;
@@ -30,6 +31,19 @@ class InMemoryScreeningRepository implements ScreeningRepositoryInterface
     public function getById(ScreeningId $id): ?Screening
     {
         return $this->screenings[$id->toString()] ?? null;
+    }
+
+    public function getByReservationId(ReservationId $id): ?Screening
+    {
+        foreach ($this->screenings as $screening) {
+            foreach ($screening->getReservations() as $reservation) {
+                if ($reservation->getId()->toString() === $id->toString()) {
+                    return $screening;
+                }
+            }
+        }
+
+        return null;
     }
 
     public function save(Screening $screening): void

@@ -5,31 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fba0450c-143b-41a2-ba79-bb3240da630c" name="Changes" comment="Update docs and instructions for gemini model. Basic business logic and tests.">
-      <change afterPath="$PROJECT_DIR$/src/Reservations/Infrastructure/Console/MakeReservationCommand.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sales/Infrastructure/Console/PickUpReservationCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ddev/config.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ddev/traefik/certs/CinemaReservations.crt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ddev/traefik/certs/CinemaReservations.key" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.ddev/traefik/config/CinemaReservations.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env.test" beforeDir="false" afterPath="$PROJECT_DIR$/.env.test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/CinemaReservations.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CinemaReservations.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/reference.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/reference.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/phpunit.dist.xml" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.dist.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Reservations/Domain/Reservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Reservations/Domain/Reservation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Reservations/Application/Command/MakeReservation/MakeReservationCommandHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Reservations/Application/Command/MakeReservation/MakeReservationCommandHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Reservations/Application/Command/RedeemReservation/RedeemReservationCommandHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Reservations/Application/Command/RedeemReservation/RedeemReservationCommandHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Reservations/Domain/ReservationRepositoryInterface.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Reservations/Domain/Screening.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Reservations/Domain/Screening.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Reservations/Domain/ScreeningRoom/Row.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Reservations/Domain/ScreeningRoom/Row.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Reservations/Domain/ScreeningRoom/ScreeningRoom.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Reservations/Domain/ScreeningRoom/ScreeningRoom.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sales/Domain/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sales/Domain/Order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/Reservations/Domain/ReservationTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Reservations/Domain/ReservationTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Reservations/Domain/ScreeningRepositoryInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Reservations/Domain/ScreeningRepositoryInterface.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Reservations/Infrastructure/InMemoryScreeningRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Reservations/Infrastructure/InMemoryScreeningRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Reservations/Infrastructure/Persistence/Doctrine/DoctrineReservationRepository.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Reservations/Infrastructure/Persistence/Doctrine/DoctrineScreeningRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Reservations/Infrastructure/Persistence/Doctrine/DoctrineScreeningRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sales/Application/Command/PickUpReservation/PickUpReservationCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sales/Application/Command/PickUpReservation/PickUpReservationCommand.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sales/Application/Command/PickUpReservation/PickUpReservationCommandHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sales/Application/Command/PickUpReservation/PickUpReservationCommandHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sales/Infrastructure/Console/PickUpReservationCommand.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sales/Infrastructure/Console/PickUpReservationCommand.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/Reservations/Domain/ScreeningTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Reservations/Domain/ScreeningTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Sales/Application/PickUpReservationIntegrationTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Sales/Application/PickUpReservationIntegrationTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +32,7 @@
     </execution>
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="123" />
+    <option name="cachedIndexableFilesCount" value="133" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="Git.Settings">
@@ -172,18 +161,6 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="QodanaHighlightedReportService">
-    <option name="localRunNotPublishedPersistedInfo">
-      <LocalReportPersistedInfo>
-        <option name="path" value="/tmp/qodana_output/qodana.sarif.json" />
-        <option name="reportGuid" value="63b9b2d9-e410-4084-9d0c-bcd3bcca87ec" />
-        <option name="reportName" value="CinemaReservations/qodana/2026-05-04" />
-      </LocalReportPersistedInfo>
-    </option>
-  </component>
-  <component name="QodanaIsSelectedPersistenceService">
-    <option name="selectedOrLoading" value="true" />
-  </component>
   <component name="QodanaReportsService">
     <option name="descriptions">
       <ReportDescription localRun="true" path="/tmp/qodana_output/qodana.sarif.json" reportGuid="63b9b2d9-e410-4084-9d0c-bcd3bcca87ec" reportId="CinemaReservations/qodana/2026-05-04" />
@@ -249,6 +226,7 @@
       <workItem from="1777371679248" duration="820000" />
       <workItem from="1777639945941" duration="18544000" />
       <workItem from="1777911053062" duration="15367000" />
+      <workItem from="1777960279497" duration="4929000" />
     </task>
     <task id="LOCAL-00001" summary="Ubiquitous language, class diagram of the domain, ddev">
       <option name="closed" value="true" />

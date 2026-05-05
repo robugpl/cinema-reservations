@@ -25,14 +25,14 @@ class PickUpReservationIntegrationTest extends KernelTestCase
 {
     private EntityManagerInterface $em;
     private MakeReservationCommandHandler $makeHandler;
-    private PickUpReservationCommandHandler $pickupHandler;
+    private PickUpReservationCommandHandler $pickUpHandler;
 
     protected function setUp(): void
     {
         self::bootKernel();
         $this->em = static::getContainer()->get(EntityManagerInterface::class);
         $this->makeHandler = static::getContainer()->get(MakeReservationCommandHandler::class);
-        $this->pickupHandler = static::getContainer()->get(PickUpReservationCommandHandler::class);
+        $this->pickUpHandler = static::getContainer()->get(PickUpReservationCommandHandler::class);
 
         // Update schema
         $schemaTool = new SchemaTool($this->em);
@@ -43,7 +43,7 @@ class PickUpReservationIntegrationTest extends KernelTestCase
         // Load fixtures
         $loader = new Loader();
         $loader->addFixture(new AppFixtures());
-        
+
         $purger = new ORMPurger($this->em);
         $executor = new ORMExecutor($this->em, $purger);
         $executor->execute($loader->getFixtures());
@@ -66,25 +66,9 @@ class PickUpReservationIntegrationTest extends KernelTestCase
 
         $this->em->clear();
 
-        // 2. Act: Pick it up
-        /** @var Reservation $reservation */
-        $reservation = $this->em->getRepository(Reservation::class)->find($reservationIdString);
-        
-        $ticketsData = [];
-        foreach ($reservation->getSeatIds() as $seatId) {
-            $ticketsData[] = [
-                'screeningId' => $reservation->getScreeningId()->toString(),
-                'seatId' => $seatId->toString(),
-                'priceInMinorUnits' => 2000
-            ];
-        }
+        // 2. Act: Pick it up via CommandHandler (orchestrates both BCs)
+        $ticketIds = $this->pickUpHandler->handle(new PickUpReservationCommand($reservationIdString));
 
-        $reservation->redeem();
-
-        $ticketIds = $this->pickupHandler->handle(
-            new PickUpReservationCommand($email, $ticketsData)
-        );
-        $this->em->flush();
         $this->em->clear();
 
         // 3. Assert

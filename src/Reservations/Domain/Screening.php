@@ -56,9 +56,9 @@ class Screening
     public function reserve(
         array $seatIds,
         Email $email,
-        \DateTimeImmutable $date,
-        \DateTimeImmutable $expirationDate
+        \DateTimeImmutable $date
     ): Reservation {
+        $expirationDate = $date->modify('+15 minutes');
         // Enforce business rule: Prevent double booking
         foreach ($this->reservations as $reservation) {
             $status = $reservation->getReservationStatus();
@@ -82,7 +82,12 @@ class Screening
             $date,
             $expirationDate
         );
-        $this->reservations[] = $reservation;
+
+        if (is_array($this->reservations)) {
+            $this->reservations[] = $reservation;
+        } else {
+            $this->reservations->add($reservation);
+        }
 
         return $reservation;
     }

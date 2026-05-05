@@ -47,9 +47,8 @@ class ScreeningTest extends TestCase
         $seatId = SeatId::generate();
         $email = new Email('test@cinema.com');
         $date = new \DateTimeImmutable();
-        $expirationDate = $date->modify('+15 minutes');
 
-        $reservation = $this->screening->reserve([$seatId], $email, $date, $expirationDate);
+        $reservation = $this->screening->reserve([$seatId], $email, $date);
 
         $this->assertEquals(ReservationStatus::PENDING, $reservation->getReservationStatus());
         $this->assertEquals([$seatId], $reservation->getSeatIds());
@@ -61,14 +60,13 @@ class ScreeningTest extends TestCase
         $seatId = SeatId::generate();
         $email = new Email('test@cinema.com');
         $date = new \DateTimeImmutable();
-        $expirationDate = $date->modify('+15 minutes');
 
         // First reservation (Happy Path)
-        $this->screening->reserve([$seatId], $email, $date, $expirationDate);
+        $this->screening->reserve([$seatId], $email, $date);
 
         // Second reservation attempts to book the same exact seat
         $this->expectException(SeatAlreadyReservedException::class);
-        $this->screening->reserve([$seatId], new Email('other@cinema.com'), $date, $expirationDate);
+        $this->screening->reserve([$seatId], new Email('other@cinema.com'), $date);
     }
 
     public function testItAllowsReservationAfterPreviousWasCanceled(): void
@@ -76,15 +74,14 @@ class ScreeningTest extends TestCase
         $seatId = SeatId::generate();
         $email = new Email('test@cinema.com');
         $date = new \DateTimeImmutable();
-        $expirationDate = $date->modify('+15 minutes');
 
-        $reservation = $this->screening->reserve([$seatId], $email, $date, $expirationDate);
-        
+        $reservation = $this->screening->reserve([$seatId], $email, $date);
+
         // Customer cancels the reservation
         $this->screening->cancelReservation($reservation->getId());
 
         // A new customer tries to book the now-canceled seat
-        $newReservation = $this->screening->reserve([$seatId], new Email('other@cinema.com'), $date, $expirationDate);
+        $newReservation = $this->screening->reserve([$seatId], new Email('other@cinema.com'), $date);
 
         $this->assertEquals(ReservationStatus::PENDING, $newReservation->getReservationStatus());
         // There will be 2 reservations in the history, one CANCELED and one PENDING
@@ -96,15 +93,14 @@ class ScreeningTest extends TestCase
         $seatId = SeatId::generate();
         $email = new Email('test@cinema.com');
         $date = new \DateTimeImmutable();
-        $expirationDate = $date->modify('+15 minutes');
 
-        $reservation = $this->screening->reserve([$seatId], $email, $date, $expirationDate);
-        
+        $reservation = $this->screening->reserve([$seatId], $email, $date);
+
         // System manually expires the reservation due to lack of payment
         $reservation->expire();
 
         // A new customer claims the expired seat
-        $newReservation = $this->screening->reserve([$seatId], new Email('other@cinema.com'), $date, $expirationDate);
+        $newReservation = $this->screening->reserve([$seatId], new Email('other@cinema.com'), $date);
 
         $this->assertEquals(ReservationStatus::PENDING, $newReservation->getReservationStatus());
     }

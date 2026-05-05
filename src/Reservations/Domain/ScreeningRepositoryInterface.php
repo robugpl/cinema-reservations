@@ -8,5 +8,7 @@ interface ScreeningRepositoryInterface
 {
     public function getById(ScreeningId $id): ?Screening;
 
+    public function getByReservationId(ReservationId $id): ?Screening;
+
     public function save(Screening $screening): void;
 }
