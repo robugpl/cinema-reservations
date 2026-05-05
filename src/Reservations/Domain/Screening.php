@@ -11,8 +11,8 @@ use App\Shared\Domain\Email;
 
 class Screening
 {
-    /** @var Reservation[] */
-    private array $reservations = [];
+    /** @var Reservation[]|iterable */
+    private iterable $reservations = [];
 
     public function __construct(
         private readonly ScreeningId $id,
@@ -37,26 +37,38 @@ class Screening
         return $this->movieId;
     }
 
+    public function getStartDate(): \DateTimeImmutable
+    {
+        return $this->startDate;
+    }
+
     /**
      * @return Reservation[]
      */
     public function getReservations(): array
     {
-        return $this->reservations;
+        return is_array($this->reservations) ? $this->reservations : $this->reservations->toArray();
     }
 
+    /**
+     * @param SeatId[] $seatIds
+     */
     public function reserve(
-        SeatId $seatId,
+        array $seatIds,
         Email $email,
         \DateTimeImmutable $date,
         \DateTimeImmutable $expirationDate
     ): Reservation {
         // Enforce business rule: Prevent double booking
         foreach ($this->reservations as $reservation) {
-            if ($reservation->getSeatId()->toString() === $seatId->toString()) {
-                $status = $reservation->getReservationStatus();
-                if ($status === ReservationStatus::PENDING || $status === ReservationStatus::REDEEMED) {
-                    throw new SeatAlreadyReservedException($seatId->toString());
+            $status = $reservation->getReservationStatus();
+            if ($status === ReservationStatus::PENDING || $status === ReservationStatus::REDEEMED) {
+                foreach ($reservation->getSeatIds() as $reservedSeatId) {
+                    foreach ($seatIds as $requestedSeatId) {
+                        if ($reservedSeatId->toString() === $requestedSeatId->toString()) {
+                            throw new SeatAlreadyReservedException($requestedSeatId->toString());
+                        }
+                    }
                 }
             }
         }
@@ -65,7 +77,7 @@ class Screening
         $reservation = new Reservation(
             $reservationId,
             $this->id,
-            $seatId,
+            $seatIds,
             $email,
             $date,
             $expirationDate
@@ -84,6 +96,18 @@ class Screening
             }
         }
         
+        throw new \InvalidArgumentException('Reservation not found in this screening.');
+    }
+
+    public function redeemReservation(ReservationId $reservationId): void
+    {
+        foreach ($this->reservations as $reservation) {
+            if ($reservation->getId()->toString() === $reservationId->toString()) {
+                $reservation->redeem();
+                return;
+            }
+        }
+
         throw new \InvalidArgumentException('Reservation not found in this screening.');
     }
 }

@@ -1,0 +1,67 @@
+doctrine:
+    dbal:
+        url: '%env(resolve:DATABASE_URL)%'
+
+        types:
+            screening_id: App\Reservations\Infrastructure\Persistence\Doctrine\Type\ScreeningIdType
+            movie_id: App\Reservations\Infrastructure\Persistence\Doctrine\Type\MovieIdType
+            reservation_id: App\Reservations\Infrastructure\Persistence\Doctrine\Type\ReservationIdType
+            screening_room_id: App\Reservations\Infrastructure\Persistence\Doctrine\Type\ScreeningRoomIdType
+            seat_id: App\Reservations\Infrastructure\Persistence\Doctrine\Type\SeatIdType
+            reservation_status: App\Reservations\Infrastructure\Persistence\Doctrine\Type\ReservationStatusType
+            order_id: App\Sales\Infrastructure\Persistence\Doctrine\Type\OrderIdType
+            ticket_id: App\Sales\Infrastructure\Persistence\Doctrine\Type\TicketIdType
+            email: App\Shared\Infrastructure\Persistence\Doctrine\Type\EmailType
+            money: App\Shared\Infrastructure\Persistence\Doctrine\Type\MoneyType
+            movie_duration: App\Reservations\Infrastructure\Persistence\Doctrine\Type\MovieDurationType
+            screening_room_rows: App\Reservations\Infrastructure\Persistence\Doctrine\Type\ScreeningRoomRowsType
+            reservation_seat_ids: App\Reservations\Infrastructure\Persistence\Doctrine\Type\ReservationSeatIdsType
+
+        # IMPORTANT: You MUST configure your server version,
+        # either here or in the DATABASE_URL env var (see .env file)
+        #server_version: '16'
+
+        profiling_collect_backtrace: '%kernel.debug%'
+    orm:
+        validate_xml_mapping: true
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        identity_generation_preferences:
+            Doctrine\DBAL\Platforms\PostgreSQLPlatform: identity
+        auto_mapping: true
+        mappings:
+            Reservations:
+                type: xml
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/Reservations/Infrastructure/Persistence/Doctrine/Mapping'
+                prefix: 'App\Reservations\Domain'
+                alias: Reservations
+            Sales:
+                type: xml
+                is_bundle: false
+                dir: '%kernel.project_dir%/src/Sales/Infrastructure/Persistence/Doctrine/Mapping'
+                prefix: 'App\Sales\Domain'
+                alias: Sales
+
+when@test:
+    doctrine:
+        dbal:
+            # "TEST_TOKEN" is typically set by ParaTest
+            dbname_suffix: '_test%env(default::TEST_TOKEN)%'
+
+when@prod:
+    doctrine:
+        orm:
+            query_cache_driver:
+                type: pool
+                pool: doctrine.system_cache_pool
+            result_cache_driver:
+                type: pool
+                pool: doctrine.result_cache_pool
+
+    framework:
+        cache:
+            pools:
+                doctrine.result_cache_pool:
+                    adapter: cache.app
+                doctrine.system_cache_pool:
+                    adapter: cache.system

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="App\Reservations\Domain\Reservation" table="reservations">
+        <id name="id" type="reservation_id" column="id" />
+
+        <field name="screeningId" type="screening_id" column="screening_id" />
+        <field name="seatIds" type="reservation_seat_ids" column="seat_ids_json" />
+        <field name="status" type="reservation_status" column="status" />
+        <field name="email" type="email" column="email" />
+        <field name="date" type="datetime_immutable" column="date" />
+        <field name="expirationDate" type="datetime_immutable" column="expiration_date" />
+
+    </entity>
+
+</doctrine-mapping>

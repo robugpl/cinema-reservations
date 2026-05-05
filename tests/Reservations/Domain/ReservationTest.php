@@ -19,7 +19,7 @@ class ReservationTest extends TestCase
         $reservation = new Reservation(
             ReservationId::generate(),
             ScreeningId::generate(),
-            SeatId::generate(),
+            [SeatId::generate()],
             new Email('test@cinema.com'),
             new \DateTimeImmutable(),
             (new \DateTimeImmutable())->modify('+15 minutes')
@@ -37,7 +37,7 @@ class ReservationTest extends TestCase
         $reservation = new Reservation(
             ReservationId::generate(),
             ScreeningId::generate(),
-            SeatId::generate(),
+            [SeatId::generate()],
             new Email('test@cinema.com'),
             new \DateTimeImmutable(),
             (new \DateTimeImmutable())->modify('+15 minutes')

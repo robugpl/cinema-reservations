@@ -11,7 +11,7 @@ class Row
      */
     public function __construct(
         private readonly int $rowNumber,
-        private array $seats = []
+        private readonly array $seats = []
     ) {
     }
 

@@ -4,15 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fba0450c-143b-41a2-ba79-bb3240da630c" name="Changes" comment="Ubiquitous language, class diagram of the domain, ddev">
-      <change afterPath="$PROJECT_DIR$/src/Reservations/Domain/Exception/InvalidMovieDurationException.php" afterDir="false" />
+    <list default="true" id="fba0450c-143b-41a2-ba79-bb3240da630c" name="Changes" comment="Update docs and instructions for gemini model. Basic business logic and tests.">
       <change afterPath="$PROJECT_DIR$/src/Reservations/Infrastructure/Console/MakeReservationCommand.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sales/Domain/Exception/OrderCannotBeEmpty.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/Sales/Infrastructure/Console/PickUpReservationCommand.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.GEMINI.md" beforeDir="false" afterPath="$PROJECT_DIR$/.GEMINI.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ddev/config.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ddev/traefik/certs/CinemaReservations.crt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ddev/traefik/certs/CinemaReservations.key" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.ddev/traefik/config/CinemaReservations.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env.test" beforeDir="false" afterPath="$PROJECT_DIR$/.env.test" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/CinemaReservations.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CinemaReservations.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/reference.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/reference.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/domain_class_diagram.mmd" beforeDir="false" afterPath="$PROJECT_DIR$/docs/domain_class_diagram.mmd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phpunit.dist.xml" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.dist.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Reservations/Domain/Reservation.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Reservations/Domain/Reservation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Reservations/Domain/Screening.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Reservations/Domain/Screening.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Reservations/Domain/ScreeningRoom/Row.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Reservations/Domain/ScreeningRoom/Row.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Reservations/Domain/ScreeningRoom/ScreeningRoom.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Reservations/Domain/ScreeningRoom/ScreeningRoom.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sales/Domain/Order.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sales/Domain/Order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Reservations/Domain/ReservationTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Reservations/Domain/ReservationTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/Reservations/Domain/ScreeningTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/Reservations/Domain/ScreeningTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,7 +38,9 @@
   </component>
   <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <execution />
+    <execution>
+      <executable path="composer" />
+    </execution>
   </component>
   <component name="EmbeddingIndexingInfo">
     <option name="cachedIndexableFilesCount" value="123" />
@@ -98,7 +117,27 @@
       <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
       <path value="$PROJECT_DIR$/vendor/symfony/yaml" />
       <path value="$PROJECT_DIR$/vendor/symfony/console" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/deprecations" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/collections" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/migrations" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/sql-formatter" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/persistence" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/orm" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-bundle" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-migrations-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/doctrine-bridge" />
+      <path value="$PROJECT_DIR$/vendor/symfony/stopwatch" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/data-fixtures" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/doctrine-fixtures-bundle" />
     </include_path>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -109,30 +148,47 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "PHPUnit.MovieDurationTest.testItValidatesPositiveDuration.executor": "Run",
-    "PHPUnit.OrderTest.testItFailsWithNoItems.executor": "Debug",
-    "PHPUnit.ScreeningTest.testItAllowsReservationIfPreviousIsExpired.executor": "Run",
-    "PHPUnit.ScreeningTest.testItSuccessfullyReservesAnAvailableSeat.executor": "Run",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary": "PHPUnit",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;PHPUnit.MovieDurationTest.testItValidatesPositiveDuration.executor&quot;: &quot;Run&quot;,
+    &quot;PHPUnit.OrderTest.testItFailsWithNoItems.executor&quot;: &quot;Debug&quot;,
+    &quot;PHPUnit.ScreeningTest.testItAllowsReservationIfPreviousIsExpired.executor&quot;: &quot;Run&quot;,
+    &quot;PHPUnit.ScreeningTest.testItSuccessfullyReservesAnAvailableSeat.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary&quot;: &quot;PHPUnit&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="QodanaHighlightedReportService">
+    <option name="localRunNotPublishedPersistedInfo">
+      <LocalReportPersistedInfo>
+        <option name="path" value="/tmp/qodana_output/qodana.sarif.json" />
+        <option name="reportGuid" value="63b9b2d9-e410-4084-9d0c-bcd3bcca87ec" />
+        <option name="reportName" value="CinemaReservations/qodana/2026-05-04" />
+      </LocalReportPersistedInfo>
+    </option>
+  </component>
+  <component name="QodanaIsSelectedPersistenceService">
+    <option name="selectedOrLoading" value="true" />
+  </component>
+  <component name="QodanaReportsService">
+    <option name="descriptions">
+      <ReportDescription localRun="true" path="/tmp/qodana_output/qodana.sarif.json" reportGuid="63b9b2d9-e410-4084-9d0c-bcd3bcca87ec" reportId="CinemaReservations/qodana/2026-05-04" />
+    </option>
+  </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/tests/Reservations/Domain" />
@@ -192,7 +248,7 @@
       <workItem from="1777144140729" duration="1904000" />
       <workItem from="1777371679248" duration="820000" />
       <workItem from="1777639945941" duration="18544000" />
-      <workItem from="1777911053062" duration="5818000" />
+      <workItem from="1777911053062" duration="15367000" />
     </task>
     <task id="LOCAL-00001" summary="Ubiquitous language, class diagram of the domain, ddev">
       <option name="closed" value="true" />
@@ -202,7 +258,15 @@
       <option name="project" value="LOCAL" />
       <updated>1777665833767</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Update docs and instructions for gemini model. Basic business logic and tests.">
+      <option name="closed" value="true" />
+      <created>1777920602100</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1777920602100</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,7 +285,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Ubiquitous language, class diagram of the domain, ddev" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ubiquitous language, class diagram of the domain, ddev" />
+    <MESSAGE value="Update docs and instructions for gemini model. Basic business logic and tests." />
+    <option name="LAST_COMMIT_MESSAGE" value="Update docs and instructions for gemini model. Basic business logic and tests." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

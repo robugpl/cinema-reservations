@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity name="App\Sales\Domain\Ticket" table="tickets">
+        <id name="id" type="ticket_id" column="id" />
+
+        <field name="screeningId" type="screening_id" column="screening_id" />
+        <field name="seatId" type="seat_id" column="seat_id" />
+        <field name="price" type="money" column="price" />
+
+    </entity>
+
+</doctrine-mapping>

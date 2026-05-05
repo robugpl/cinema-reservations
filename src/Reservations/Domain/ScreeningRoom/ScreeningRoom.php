@@ -15,7 +15,7 @@ class ScreeningRoom
     public function __construct(
         private readonly ScreeningRoomId $id,
         private readonly string $name,
-        private array $rows
+        private readonly array $rows
     ) {
         foreach ($this->rows as $row) {
             foreach ($row->getSeats() as $seat) {

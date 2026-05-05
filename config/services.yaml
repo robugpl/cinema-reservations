@@ -21,3 +21,6 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    App\Reservations\Domain\ScreeningRepositoryInterface: '@App\Reservations\Infrastructure\Persistence\Doctrine\DoctrineScreeningRepository'
+    App\Reservations\Domain\ReservationRepositoryInterface: '@App\Reservations\Infrastructure\Persistence\Doctrine\DoctrineReservationRepository'
+    App\Sales\Domain\OrderRepositoryInterface: '@App\Sales\Infrastructure\Persistence\Doctrine\DoctrineOrderRepository'

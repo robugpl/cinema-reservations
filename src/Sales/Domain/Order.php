@@ -16,9 +16,9 @@ class Order
      * @param Ticket[] $tickets
      */
     public function __construct(
-        private readonly OrderId $id,
-        private readonly array   $tickets,
-        private readonly Email   $email
+        private readonly OrderId  $id,
+        private iterable $tickets,
+        private readonly Email    $email
     ) {
 
         if(empty($this->tickets)) {
@@ -44,5 +44,13 @@ class Order
     public function getEmail(): Email
     {
         return $this->email;
+    }
+
+    /**
+     * @return iterable<Ticket>
+     */
+    public function getTickets(): iterable
+    {
+        return $this->tickets;
     }
 }

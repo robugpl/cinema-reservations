@@ -11,14 +11,20 @@ class Reservation
 {
     private ReservationStatus $status;
 
+    /**
+     * @param SeatId[] $seatIds
+     */
     public function __construct(
         private readonly ReservationId $id,
         private readonly ScreeningId $screeningId,
-        private readonly SeatId $seatId,
+        private readonly array $seatIds,
         private readonly Email $email,
         private readonly \DateTimeImmutable $date,
         private readonly \DateTimeImmutable $expirationDate
     ) {
+        if (empty($seatIds)) {
+            throw new \InvalidArgumentException('Reservation must have at least one seat.');
+        }
         $this->status = ReservationStatus::PENDING;
     }
 
@@ -32,9 +38,12 @@ class Reservation
         return $this->screeningId;
     }
 
-    public function getSeatId(): SeatId
+    /**
+     * @return SeatId[]
+     */
+    public function getSeatIds(): array
     {
-        return $this->seatId;
+        return $this->seatIds;
     }
 
     public function getReservationStatus(): ReservationStatus
@@ -60,5 +69,10 @@ class Reservation
     public function expire(): void
     {
         $this->status = ReservationStatus::EXPIRED;
+    }
+
+    public function redeem(): void
+    {
+        $this->status = ReservationStatus::REDEEMED;
     }
 }
